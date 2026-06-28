@@ -1,0 +1,38 @@
+TBRC ROOFING — CONTACT FORM SETUP (one step, ~2 minutes)
+=========================================================
+
+The quote form sends submissions straight to your inbox with one click —
+no page reload, no email app opening. It uses Web3Forms (free, no account).
+
+You just need to add your access key:
+
+1. Go to  https://web3forms.com
+2. Enter the email where you want leads to arrive (e.g. info@tbrcroofing.com)
+3. They email you an "Access Key" — a long string of letters/numbers.
+4. Open BOTH of these files in a text editor:
+       contact.html
+       free-inspection.html
+5. In each, find this line near the top of the form:
+
+       <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+
+   Replace  YOUR_ACCESS_KEY_HERE  with the key they emailed you.
+   (Keep the quotation marks.)
+
+6. Save, and re-upload both files. Done — the form now sends on click.
+
+That's it. No other changes needed.
+
+----------------------------------------------------------------
+NOTES
+----------------------------------------------------------------
+• Leads are emailed to whatever address you registered with Web3Forms.
+  To change where they go, just update it in your Web3Forms settings.
+
+• Until a real key is added, the form safely falls back to opening the
+  visitor's email app (pre-addressed to info@tbrcroofing.com), so it is
+  never broken.
+
+• A hidden anti-spam honeypot field is already built in.
+
+• Web3Forms' free tier covers 250 submissions/month at no cost.
