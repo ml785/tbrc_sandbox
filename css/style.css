@@ -53,15 +53,17 @@ header.site.scrolled{box-shadow:0 4px 18px rgba(0,0,0,.35)}
 .brand{display:flex;align-items:center;gap:14px}
 .brand img{height:74px;width:auto}
 .menu{display:flex;align-items:center;gap:4px}
-.menu .item{position:relative}
+.menu .item{position:relative;display:flex;align-items:center}
 .menu .item>a{
   display:inline-flex;align-items:center;gap:5px;padding:12px 16px;font-weight:600;
   font-size:.96rem;color:rgba(255,255,255,.88);border-radius:7px;transition:color .18s,background .18s;
 }
-.menu .item>a .car{width:11px;height:11px;opacity:.6;transition:transform .2s}
-.menu .item:hover>a{color:#fff;background:rgba(255,255,255,.08)}
-.menu .item:hover>a .car{transform:rotate(180deg)}
-.menu .item>a.active{color:#7db6e6}
+/* desktop: the separate toggle button shows the caret inline, no extra click needed (hover opens) */
+.submenu-toggle{display:inline-flex;align-items:center;background:none;border:0;cursor:pointer;padding:12px 14px 12px 0;margin-left:-10px;color:rgba(255,255,255,.88)}
+.submenu-toggle .car{width:11px;height:11px;opacity:.6;transition:transform .2s}
+.menu .item:hover>a,.menu .item:hover>.parent-link{color:#fff;background:rgba(255,255,255,.08)}
+.menu .item:hover .submenu-toggle .car{transform:rotate(180deg)}
+.menu .item>a.active,.menu .item>.parent-link.active{color:#7db6e6}
 .dropdown{
   position:absolute;top:calc(100% + 6px);left:0;min-width:248px;background:#fff;
   border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:8px;
@@ -88,9 +90,11 @@ header.site.scrolled{box-shadow:0 4px 18px rgba(0,0,0,.35)}
 .btn-ghost-light:hover{border-color:#fff;background:rgba(255,255,255,.1)}
 .btn-lg{padding:16px 30px;font-size:1rem}
 .hamburger{display:none;position:relative;width:42px;height:42px;background:none;border:0;cursor:pointer;padding:0;align-items:center;justify-content:center}
-.hamburger .bars{display:flex;flex-direction:column;gap:5px;transition:opacity .25s,transform .25s}
-.hamburger .bars span{width:26px;height:2.6px;background:#fff;border-radius:2px;display:block}
-.hamburger .tools{position:absolute;width:30px;height:30px;opacity:0;transform:rotate(-90deg) scale(.6);transition:opacity .3s ease,transform .35s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.hamburger .bars{position:relative;width:26px;height:18px}
+.hamburger .bars span{position:absolute;left:0;width:26px;height:2.6px;background:#fff;border-radius:2px;transition:transform .3s ease,opacity .2s ease;transform-origin:center}
+.hamburger .bars span:nth-child(1){top:0}
+.hamburger .bars span:nth-child(2){top:7.7px}
+.hamburger .bars span:nth-child(3){top:15.4px}
 
 /* mobile nav */
 @media(max-width:980px){
@@ -101,17 +105,28 @@ header.site.scrolled{box-shadow:0 4px 18px rgba(0,0,0,.35)}
     transition:transform .35s;box-shadow:-20px 0 60px rgba(0,0,0,.4);overflow-y:auto;z-index:70;
   }
   .menu.open{transform:none}
-  .menu .item>a{padding:14px 16px;font-size:1.05rem;border-radius:9px}
-  .menu .item>a .car{margin-left:auto}
-  .dropdown{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:transparent;
-    border-left:2px solid rgba(255,255,255,.18);border-radius:0;margin:2px 0 6px 16px;padding:2px 0;max-height:0;overflow:hidden;transition:max-height .3s}
-  .dropdown a{color:rgba(255,255,255,.75)}
-  .dropdown a:hover{background:rgba(255,255,255,.08);color:#fff}
-  .menu .item.expanded .dropdown{max-height:400px}
+  /* each item is a row: link (flex-grows) + a clearly separated toggle on the right */
+  .menu .item{display:flex;flex-wrap:wrap;align-items:stretch}
+  .menu .item>a,.menu .item>.parent-link{flex:1;padding:15px 16px;font-size:1.08rem;border-radius:9px;display:flex;align-items:center}
+  /* toggle: its own wide tap target, visually divided from the label */
+  .submenu-toggle{
+    flex:0 0 auto;width:58px;margin:0;padding:0;display:flex;align-items:center;justify-content:center;
+    border-left:1px solid rgba(255,255,255,.14);border-radius:0;color:#fff;
+  }
+  .submenu-toggle .car{width:16px;height:16px;opacity:.85;transition:transform .3s}
+  .menu .item.expanded .submenu-toggle .car{transform:rotate(180deg)}
+  .menu .item.expanded .submenu-toggle{background:rgba(255,255,255,.06)}
+  /* dropdown spans full width below the row */
+  .dropdown{flex-basis:100%;position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:transparent;
+    border-left:2px solid rgba(39,114,185,.5);border-radius:0;margin:2px 0 8px 18px;padding:0;max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .dropdown a{color:rgba(255,255,255,.72);padding:13px 16px;font-size:1rem}
+  .dropdown a:hover,.dropdown a:active{background:rgba(255,255,255,.08);color:#fff}
+  .menu .item.expanded .dropdown{max-height:420px}
   .menu .item:hover .dropdown{opacity:1;visibility:visible}
   .hamburger{display:flex;z-index:80}
-  .hamburger.open .bars{opacity:0;transform:scale(.5)}
-  .hamburger.open .tools{opacity:1;transform:rotate(0) scale(1)}
+  .hamburger.open .bars span:nth-child(1){top:7.7px;transform:rotate(45deg)}
+  .hamburger.open .bars span:nth-child(2){opacity:0}
+  .hamburger.open .bars span:nth-child(3){top:7.7px;transform:rotate(-45deg)}
   .nav-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:.3s;z-index:55}
   .nav-backdrop.open{opacity:1;visibility:visible}
 }

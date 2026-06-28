@@ -61,7 +61,7 @@
     <nav class="menu" id="menu" aria-label="Main">
       <div class="item"><a href="index.html">Home</a></div>
       <div class="item">
-        <a href="about.html">About <svg class="car" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+        <a href="about.html" class="parent-link">About</a><button class="submenu-toggle" aria-label="Expand About menu" aria-expanded="false"><svg class="car" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
         <div class="dropdown">
           <a href="about.html">About TBRC</a>
           <a href="products.html">Our Products</a>
@@ -79,7 +79,7 @@
         </div>
       </div>
       <div class="item">
-        <a href="projects.html">Projects <svg class="car" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+        <a href="projects.html" class="parent-link">Projects</a><button class="submenu-toggle" aria-label="Expand Projects menu" aria-expanded="false"><svg class="car" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
         <div class="dropdown">
           <a href="projects.html">Project Overview</a>
           <a href="testimonials.html">Client Testimonials</a>
@@ -90,18 +90,7 @@
     </nav>
     <div class="nav-cta">
       <a class="btn btn-blue btn-text" href="free-inspection.html">Free Inspection</a>
-      <button class="hamburger" id="burger" aria-label="Toggle menu" aria-expanded="false">
-        <span class="bars"><span></span><span></span><span></span></span>
-        <svg class="tools" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <!-- WRENCH (bottom-left to top-right) -->
-          <path d="M19.8 8.3a4.6 4.6 0 0 0 5.6 5.6l-3 .8-.8 3.0-3.0.8a4.6 4.6 0 0 1-5.6-5.6l3 .8 .8-3.0 3.0-.8z" fill="#fff"/>
-          <rect x="6.0" y="20.4" width="11.5" height="3.4" rx="1.7" transform="rotate(-45 6.0 20.4)" fill="#fff"/>
-          <!-- HAMMER (top-left to bottom-right) -->
-          <path d="M9.0 8.6l3.6-3.6 4.4 4.4-3.6 3.6-1.5-1.5-7.0 7.0a1.6 1.6 0 0 0 0 2.3l.0 .0a1.6 1.6 0 0 0 2.3 0l7.0-7.0z" fill="#fff" opacity="0"/>
-          <path d="M10.2 5.2l5.0 5.0-2.0 2.0-5.0-5.0z" fill="#fff"/>
-          <rect x="11.3" y="12.2" width="3.4" height="13.5" rx="1.7" transform="rotate(-45 11.3 12.2)" fill="#fff"/>
-        </svg>
-      </button>
+      <button class="hamburger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span class="bars"><span></span><span></span><span></span></span></button>
     </div>
   </div>
 </header>

@@ -21,24 +21,30 @@
     });
   }
   if(backdrop)backdrop.addEventListener('click',closeMenu);
-
-  // mobile dropdown expand (tap parent)
-  if(window.matchMedia('(max-width:980px)').matches){
-    document.querySelectorAll('.menu .item').forEach(function(it){
-      var dd=it.querySelector('.dropdown');
-      var link=it.querySelector(':scope>a');
-      if(dd&&link){
-        link.addEventListener('click',function(e){
-          // if it's a parent with children and has its own page, first tap expands
-          if(!it.classList.contains('expanded')){
-            e.preventDefault();
-            document.querySelectorAll('.menu .item.expanded').forEach(function(o){if(o!==it)o.classList.remove('expanded')});
-            it.classList.add('expanded');
-          }
-        });
-      }
+  // tapping any real navigation link closes the panel (toggle buttons excluded)
+  if(menu){
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){closeMenu();});
     });
   }
+
+  // Mobile submenu: the toggle button (right side) expands/collapses.
+  // The parent label is a normal link and always navigates — no interception.
+  document.querySelectorAll('.submenu-toggle').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var item=btn.closest('.item');
+      if(!item)return;
+      var nowOpen=!item.classList.contains('expanded');
+      // close any others so only one is open at a time
+      document.querySelectorAll('.menu .item.expanded').forEach(function(o){
+        if(o!==item){o.classList.remove('expanded');var b=o.querySelector('.submenu-toggle');if(b)b.setAttribute('aria-expanded','false');}
+      });
+      item.classList.toggle('expanded',nowOpen);
+      btn.setAttribute('aria-expanded',nowOpen?'true':'false');
+    });
+  });
 
   // scroll reveal
   var io=new IntersectionObserver(function(es){
