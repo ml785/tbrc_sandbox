@@ -1,0 +1,73 @@
+TBRC ROOFING — SEO SUMMARY
+==========================
+
+WHAT'S BEEN DONE (already in the site files)
+--------------------------------------------
+On every page:
+  • Unique <title> and meta description
+  • Canonical URL tag (prevents duplicate-content issues)
+  • Open Graph tags (Facebook / LinkedIn / iMessage link previews)
+  • Twitter Card tags (large-image previews on X)
+  • Robots meta (index, follow)
+  • Geo meta (Frisco, TX) for local relevance
+  • Favicon + Apple touch icon (uses the logo)
+  • Descriptive alt text on all images
+
+Structured data (JSON-LD) — this is the big one for local search:
+  • Homepage: full RoofingContractor / LocalBusiness schema with name,
+    address, phone, hours, service area (TX + OK), founding year (1994),
+    slogan, and a catalog of services. This is what lets Google show you
+    as a real local business with rich details.
+  • Service pages: Service schema (replacement, restoration, damage assessment)
+  • All inner pages: BreadcrumbList schema (nicer search result display)
+
+Site-wide files:
+  • sitemap.xml  — lists all 14 pages for search engines
+  • robots.txt   — allows crawling and points to the sitemap
+
+
+WHAT YOU SHOULD DO AFTER LAUNCH (off-page — can't be done in code)
+------------------------------------------------------------------
+These matter as much as the on-page work for a roofing company:
+
+1. GOOGLE BUSINESS PROFILE (highest priority)
+   Claim/verify the listing at google.com/business for the Frisco address.
+   This is the #1 driver of local roofing leads. Add photos (use the
+   aerial project shots), services, hours, and service areas. Ask happy
+   clients (Stacy Furniture, etc.) for Google reviews.
+
+2. GOOGLE SEARCH CONSOLE
+   Go to search.google.com/search-console, add the property, verify it,
+   and submit:  https://tbrcroofing.com/sitemap.xml
+   This tells Google to crawl all pages and shows you search performance.
+
+3. BING WEBMASTER TOOLS
+   Same idea at bing.com/webmasters — submit the sitemap. Quick win.
+
+4. CONSISTENT NAP (Name / Address / Phone)
+   Make sure the business name, "5899 Preston Road, Suite 101, Frisco,
+   TX 75034", and phone numbers appear IDENTICALLY across the website,
+   Google Business Profile, Facebook, BBB, and any directories. Google
+   cross-checks these for local ranking.
+
+5. UPDATE THE FACEBOOK LINK
+   The schema references facebook.com/tbrcroofingcompany. Confirm that's
+   the right page, or send me the correct URL to update it.
+
+
+OPTIONAL FUTURE WINS
+--------------------
+  • A blog / project case studies (e.g. "How we re-roofed 2M sq ft for
+    Stacy Furniture") gives Google fresh content and ranks for long-tail
+    searches like "commercial roof replacement Grapevine TX".
+  • If you collect Google reviews, AggregateRating schema can be added to
+    show star ratings in search results. (Left out for now — adding fake
+    or unverifiable ratings violates Google's guidelines.)
+
+
+THINGS TO CONFIRM / TELL ME
+---------------------------
+  • Are the geo-coordinates right? I used Frisco's approximate lat/long
+    (33.1196, -96.8089). If you want the exact building location, send it.
+  • Is facebook.com/tbrcroofingcompany the correct social profile?
+  • Want me to add a Google Analytics or other tracking snippet?

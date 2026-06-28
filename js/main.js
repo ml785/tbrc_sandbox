@@ -109,18 +109,9 @@
       var key=keyField?keyField.value.trim():'';
       var hasKey=key && key!=='YOUR_ACCESS_KEY_HERE';
 
-      // ----- fallback: mailto (only if no key set) -----
+      // ----- fallback: if the Web3Forms key isn't set yet, ask them to call -----
       if(!hasKey){
-        var lines=[
-          'Name: '+get('name'),'Company: '+get('company'),'Email: '+get('email'),
-          'Phone: '+get('phone'),'Property Address: '+get('address'),
-          'Service Needed: '+get('service'),'Roof Type: '+get('rooftype'),
-          'Approx. Sq Ft: '+get('sqft'),'','Details:',get('message')
-        ];
-        window.location.href='mailto:info@tbrcroofing.com'+
-          '?subject='+encodeURIComponent('Roofing Quote Request — '+(get('company')||get('name')||'New Lead'))+
-          '&body='+encodeURIComponent(lines.join('\n'));
-        if(note){note.innerHTML='Opening your email app with your request ready to send. If nothing happens, email <a href="mailto:info@tbrcroofing.com">info@tbrcroofing.com</a> or call <a href="tel:8009688272">800-968-8272</a>.';note.style.color='';}
+        if(note){note.innerHTML='Online requests aren\'t active yet. Please call us at <a href="tel:8009688272">800-968-8272</a> to get started.';note.style.color='#c0392b';}
         return;
       }
 
@@ -146,12 +137,12 @@
             '</div>';
         }else{
           if(btn){btn.disabled=false;btn.textContent=origBtn;}
-          if(note){note.innerHTML='Something went wrong sending your request. Please email <a href="mailto:info@tbrcroofing.com">info@tbrcroofing.com</a> or call <a href="tel:8009688272">800-968-8272</a>.';note.style.color='#c0392b';}
+          if(note){note.innerHTML='Something went wrong sending your request. Please call us at <a href="tel:8009688272">800-968-8272</a>.';note.style.color='#c0392b';}
         }
       })
       .catch(function(){
         if(btn){btn.disabled=false;btn.textContent=origBtn;}
-        if(note){note.innerHTML='Couldn\'t reach our server. Please email <a href="mailto:info@tbrcroofing.com">info@tbrcroofing.com</a> or call <a href="tel:8009688272">800-968-8272</a>.';note.style.color='#c0392b';}
+        if(note){note.innerHTML='Couldn\'t reach us right now. Please call us at <a href="tel:8009688272">800-968-8272</a>.';note.style.color='#c0392b';}
       });
     });
   }
